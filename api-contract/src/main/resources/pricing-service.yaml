@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: Pricing Service
+  description: Pricing Service
+  version: 1.0.0
+servers:
+  - url: 'http://127.0.0.1:4000'
+    description: Local Dev server
+  - url: 'http://backend-services:4000'
+    description: Local Docker container URL
+paths:
+  /pricing:
+    get:
+      summary: Returns base pricing for a country
+      operationId: getBasePricing
+      tags:
+        - Pricing Service
+      parameters:
+        - name: countryCode
+          in: query
+          schema:
+            type: string
+            maxLength: 2
+          description: Country code
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+        '503':
+          description: Service unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+                example: 503 Unavailable
+
+  

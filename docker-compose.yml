@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  backend-services:
+    container_name: backend-services
+    image: qwkz/backend-services:latest
+    ports:
+      - 4000:4000
+
+  aggregation-service:
+    container_name: aggregation-service
+    depends_on:
+      - backend-services
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aggregation-service:latest
+    ports:
+      - 8080:8080

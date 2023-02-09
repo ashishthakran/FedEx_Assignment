@@ -1,0 +1,7 @@
+api:
+  shipment:
+    base-path: 'http://backend-services:4000'
+  pricing:
+    base-path: 'http://backend-services:4000'
+  trackstatus:
+    base-path: 'http://backend-services:4000'

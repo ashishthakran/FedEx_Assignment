@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: Shipment Service
+  description: Shipment Service
+  version: 1.0.0
+servers:
+  - url: 'http://127.0.0.1:4000'
+    description: Local Dev server
+  - url: 'http://backend-services:4000'
+    description: Local Docker container URL
+paths:
+  /shipment-products:
+    get:
+      summary: Returns a list of products (ENVELOPE, BOX or PALLET) for that order
+      operationId: getShipmentProducts
+      tags:
+        - Shipment Service
+      parameters:
+        - name: orderNumber
+          in: query
+          schema:
+            type: integer
+            maxLength: 9
+          description: Order Number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - BOX
+                  - PALLET
+        '503':
+          description: Service unavailable
+          content:
+            application/json:
+              schema:
+                type: string
+                example: 503 Unavailable
+
+  

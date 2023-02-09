@@ -1,0 +1,30 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
+  main:
+    allow-bean-definition-overriding: true
+springdoc:
+  api-docs:
+    enabled: true
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+api:
+  config:
+    connect-timeout: 5 #It's 5 seconds
+    read-timeout: 5 #It's 5 seconds
+  shipment:
+    base-path: 'http://localhost:4000'
+  pricing:
+    base-path: 'http://localhost:4000'
+  trackstatus:
+    base-path: 'http://localhost:4000'
+
+pool:
+  thread:
+    core-size: 20
+    max-size: 50
+    queue-capacity: 100
